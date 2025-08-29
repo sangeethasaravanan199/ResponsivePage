@@ -12,16 +12,3 @@ This is a responsive landing page project built as part of the **EDUNET Foundati
 - Git & GitHub
 
 ---
-
-## 🎯 Features
-
-- Responsive layout across mobile, tablet, and desktop
-- Car ride animation at the top (instead of traditional UI/UX nav bar)
-- Hero section with CTA
-- Features & Contact form
-- Clean, modern UI
-
----
-
-## 📁 Project Structure
-
