@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Landing Page</title>
+
+  <!-- =======================
+       CSS Styles
+  ======================= -->
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --primary: #0a74da;
+      --secondary: #ffdd57;
+      --card-bg: #fff;
+      --footer-bg: #333;
+      --footer-text: #fff;
+    }
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #e4e4e4;
+      --primary: #4dabf7;
+      --secondary: #ffc107;
+      --card-bg: #1e1e1e;
+      --footer-bg: #000;
+      --footer-text: #bbb;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,sans-serif;line-height:1.6;background:var(--bg-color);color:var(--text-color);transition:.4s}
+
+    /* Preloader */
+    #preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;display:flex;justify-content:center;align-items:center;z-index:2000;transition:.6s}
+    #preloader.hidden{opacity:0;visibility:hidden}
+    .spinner{border:6px solid #f3f3f3;border-top:6px solid var(--primary);border-radius:50%;width:60px;height:60px;animation:spin 1s linear infinite}
+    @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+
+    /* Navbar */
+    header{background:var(--primary);color:#fff;padding:1rem 2rem;position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;z-index:1000}
+    header h1{font-size:1.5rem}
+    nav ul{display:flex;list-style:none;gap:1.5rem}
+    nav a{color:#fff;text-decoration:none;font-weight:bold;transition:.3s}
+    nav a:hover{color:var(--secondary)}
+    .menu-toggle{display:none;font-size:1.5rem;cursor:pointer}
+
+    .dark-toggle{background:#fff;color:var(--primary);border:none;border-radius:5px;padding:.5rem 1rem;cursor:pointer;font-weight:bold;transition:.3s}
+    .dark-toggle:hover{background:var(--secondary);color:#333}
+
+    /* Hero */
+    .hero{background:linear-gradient(rgba(10,116,218,0.7),rgba(10,116,218,0.7)),url('https://picsum.photos/1600/900?random=1') no-repeat center/cover;height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;color:#fff;padding:0 1rem}
+    .hero h2{font-size:3rem;margin-bottom:1rem}
+    .hero p{font-size:1.2rem;margin-bottom:2rem}
+    .btn{background:var(--secondary);color:#333;padding:.8rem 1.5rem;border:none;border-radius:5px;font-weight:bold;cursor:pointer;transition:.3s}
+    .btn:hover{background:#ffc107}
+
+    /* Features */
+    .features{padding:4rem 2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;text-align:center}
+    .feature{background:var(--card-bg);padding:2rem;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,.1);transition:.3s}
+    .feature:hover{transform:translateY(-5px)}
+    .feature h3{margin-bottom:1rem;color:var(--primary)}
+
+    /* CTA */
+    .cta{background:var(--primary);color:#fff;text-align:center;padding:3rem 1rem}
+    .cta h2{font-size:2rem;margin-bottom:1rem}
+    .cta button{background:#fff;color:var(--primary)}
+
+    /* Footer */
+    footer{background:var(--footer-bg);color:var(--footer-text);text-align:center;padding:1.5rem;margin-top:2rem;transition:.4s}
+
+    /* Back to Top */
+    #backToTop{position:fixed;bottom:30px;right:30px;padding:.7rem 1rem;font-size:1rem;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer;display:none;transition:.3s;z-index:1001}
+    #backToTop:hover{background:var(--secondary);color:#333}
+
+    /* Responsive Navbar */
+    @media(max-width:768px){
+      nav ul{flex-direction:column;background:var(--primary);position:absolute;top:70px;right:0;width:200px;display:none}
+      nav ul.active{display:flex}
+      .menu-toggle{display:block}
+    }
+
+    /* Scroll Reveal */
+    .reveal{opacity:0;transform:translateY(40px);transition:.8s}
+    .reveal.active{opacity:1;transform:translateY(0)}
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader"><div class="spinner"></div></div>
+
+  <!-- Navbar -->
+  <header>
+    <h1>MyBrand</h1>
+    <nav>
+      <div class="menu-toggle">&#9776;</div>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        
+      </ul>
+    </nav>
+    <button class="dark-toggle">🌙 Dark</button>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div>
+      <h2>Build Responsive Websites</h2>
+      <p>Learn modern web design principles with HTML, CSS, and JavaScript.</p>
+      <button class="btn">Start Now</button>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="feature reveal">
+      <h3>Responsive Design</h3>
+      <p>Adapt layouts seamlessly across all devices.</p>
+    </div>
+    <div class="feature reveal">
+      <h3>Cross-Device Compatibility</h3>
+      <p>Deliver consistent user experience everywhere.</p>
+    </div>
+    <div class="feature reveal">
+      <h3>UI/UX Best Practices</h3>
+      <p>Enhance usability with clean design.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="cta">
+    <h2>Ready to Create Your First Project?</h2>
+    <a href="contact.html"><button class="btn">Join Now</button></a>
+  </section>
+
+  <!-- Footer -->
+  <footer><p>© 2025 MyBrand. All rights reserved.</p></footer>
+
+  <!-- Back to Top -->
+  <button id="backToTop">⬆ Top</button>
+
+  <!-- JavaScript -->
+  <script>
+    // Preloader
+    window.addEventListener("load",()=>{document.getElementById("preloader").classList.add("hidden")});
+
+    // Dark Mode
+    const darkToggle=document.querySelector(".dark-toggle");
+    darkToggle.addEventListener("click",()=>{
+      document.body.classList.toggle("dark");
+      darkToggle.textContent=document.body.classList.contains("dark")?"☀ Light":"🌙 Dark";
+    });
+
+    // Mobile Menu
+    const menuToggle=document.querySelector(".menu-toggle");
+    const navMenu=document.querySelector("nav ul");
+    menuToggle.addEventListener("click",()=>{navMenu.classList.toggle("active")});
+
+    // Back to Top
+    const backToTop=document.getElementById("backToTop");
+    window.addEventListener("scroll",()=>{
+      backToTop.style.display=window.scrollY>300?"block":"none";
+    });
+    backToTop.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});
+
+    // Scroll Reveal
+    function revealOnScroll(){
+      document.querySelectorAll(".reveal").forEach(el=>{
+        let winH=window.innerHeight;
+        let elTop=el.getBoundingClientRect().top;
+        if(elTop<winH-150){el.classList.add("active")}
+      })
+    }
+    window.addEventListener("scroll",revealOnScroll);
+  </script>
+</body>
+</html>
